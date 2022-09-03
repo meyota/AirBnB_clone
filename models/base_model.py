@@ -27,6 +27,6 @@ class BaseModel:
         """returns a dictionary containing all keys/values"""
         my_dict = self.__dict__.copy()
         my_dict["__class__"] = self.__class__.__name__
-        my_dict["created_at"] = self.created_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
-        my_dict["updated_at"] = self.updated_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
+        my_dict["created_at"] = self.created_at.isoformat()
+        my_dict["updated_at"] = self.updated_at.isoformat()
         return my_dict
