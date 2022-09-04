@@ -24,6 +24,8 @@ class BaseModel:
                         self.__setattr__(key, kwargs[key])
                     else:
                         self.__setattr__(key, datetime.fromisoformat(kwargs[key]))
+        else:
+            models.storage.new(self)
 
     # public instance methods
     def __str__(self):
@@ -33,6 +35,7 @@ class BaseModel:
     def save(self):
         """updates the public instance attribute"""
         self.updated_at = datetime.now()
+        models.storage.save()
 
     def to_dict(self):
         """returns a dictionary containing all keys/values"""
